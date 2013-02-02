@@ -7,7 +7,13 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all
+    #@movies = Movie.all
+    @sort = params[:sort]
+    @movies = Movie.order(@sort)
+  end
+
+  def sort
+    @movies = Movie.all.sort! { |a,b| a.name.downcase <=> b.name.downcase }
   end
 
   def new
