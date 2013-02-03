@@ -1,9 +1,9 @@
 class MoviesController < ApplicationController
   
-#  def initialize
-#    super
-#    @all_ratings = Movie.all_ratings
-#  end
+  def initialize
+    super
+    @all_ratings = Movie.all_ratings
+  end
 
   def show
     id = params[:id] # retrieve movie ID from URI route
@@ -15,9 +15,9 @@ class MoviesController < ApplicationController
     #@movies = Movie.all
     @sort = params[:sort]
     @ratings = params[:ratings]
-#    @ratings_ary = @ratings ? @ratings.keys : @all_ratings,1
-    @movies = Movie.order(@sort)
-#    @movies = Movie.where(:rating => @ratings_ary).order(@sort)
+    @ratings_ary = @ratings ? @ratings.keys : @all_ratings,1
+    #@movies = Movie.order(@sort)
+    @movies = Movie.where(:rating => @ratings_ary).order(@sort)
   end
 
   def sort
